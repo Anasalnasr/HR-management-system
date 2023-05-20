@@ -60,9 +60,16 @@
     right: 150px;
     width: 50px; height: 50px;
   }
-  body {
-    background-image: url("assets/Body.jpg");
-  }
+  
+    body {
+       background-image: url("assets/HR-Tech-la-gi-3-min.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      
+       background-color: rgba(245, 245, 245, 0.741);
+    }
+  
+
 
   body {
     background-image: url("assets/Body.jpg");
