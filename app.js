@@ -56,6 +56,9 @@ const employees = [
       salary: calculateSalary('Mid-Senior')
     }
   ];
+  function generateEmployeeID() {
+    return Math.floor(Math.random() * 9000) + 1000;
+  }
   
   function calculateSalary(level) {
     let min, max;
