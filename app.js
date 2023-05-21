@@ -1,15 +1,6 @@
 const employees = [];
 let nextEmployeeID = 1000;
 
-function Employee(fullName, department, level, imageURL) {
-  this.id = generateEmployeeID();
-  this.fullName = fullName;
-  this.department = department;
-  this.level = level;
-  this.imageURL = imageURL;
-  this.salary = calculateSalary(level);
-}
-
 function generateEmployeeID() {
   const id = nextEmployeeID;
   nextEmployeeID++;
@@ -81,14 +72,69 @@ function renderEmployees() {
   employees.forEach(renderEmployee);
 }
 
-// Create employee objects
-const ghazi = new Employee('Ghazi Samer', 'Administration', 'Senior', 'assets/1.jpg');
-const lana = new Employee('Lana Ali', 'Finance', 'Senior', 'assets/2.jpg');
-const tamara = new Employee('Tamara Ayoub', 'Marketing', 'Senior', 'assets/Gir.jpg');
-const safi = new Employee('Safi Walid', 'Administration', 'Mid-Senior', 'assets/3.jpg');
-const omar = new Employee('Omar Zaid', 'Development', 'Senior', 'assets/download.jpg');
-const rana = new Employee('Rana Saleh', 'Development', 'Junior', 'assets/LA.jpg');
-const hadi = new Employee('Hadi Ahmad', 'Finance', 'Mid-Senior', 'assets/5.jpg');
+// Create employee objects using object literals
+const ghazi = {
+  id: generateEmployeeID(),
+  fullName: 'Ghazi Samer',
+  department: 'Administration',
+  level: 'Senior',
+  imageURL: 'assets/1.jpg',
+  salary: calculateSalary('Senior')
+};
+
+const lana = {
+  id: generateEmployeeID(),
+  fullName: 'Lana Ali',
+  department: 'Finance',
+  level: 'Senior',
+  imageURL: 'assets/2.jpg',
+  salary: calculateSalary('Senior')
+};
+
+const tamara = {
+  id: generateEmployeeID(),
+  fullName: 'Tamara Ayoub',
+  department: 'Marketing',
+  level: 'Senior',
+  imageURL: 'assets/Gir.jpg',
+  salary: calculateSalary('Senior')
+};
+
+const safi = {
+  id: generateEmployeeID(),
+  fullName: 'Safi Walid',
+  department: 'Administration',
+  level: 'Mid-Senior',
+  imageURL: 'assets/3.jpg',
+  salary: calculateSalary('Mid-Senior')
+};
+
+const omar = {
+  id: generateEmployeeID(),
+  fullName: 'Omar Zaid',
+  department: 'Development',
+  level: 'Senior',
+  imageURL: 'assets/download.jpg',
+  salary: calculateSalary('Senior')
+};
+
+const rana = {
+  id: generateEmployeeID(),
+  fullName: 'Rana Saleh',
+  department: 'Development',
+  level: 'Junior',
+  imageURL: 'assets/LA.jpg',
+  salary: calculateSalary('Junior')
+};
+
+const hadi = {
+  id: generateEmployeeID(),
+  fullName: 'Hadi Ahmad',
+  department: 'Finance',
+  level: 'Mid-Senior',
+  imageURL: 'assets/5.jpg',
+  salary: calculateSalary('Mid-Senior')
+};
 
 // Add employees to the array
 employees.push(ghazi, lana, tamara, safi, omar, rana, hadi);
