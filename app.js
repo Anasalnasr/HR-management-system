@@ -30,49 +30,6 @@ function calculateSalary(level) {
   return netSalary;
 }
 
-function renderEmployee(employee) {
-  const employeeContainer = document.getElementById('employee-container');
-
-  const employeeCard = document.createElement('div');
-  employeeCard.classList.add('employee-card');
-
-  const employeeId = document.createElement('p');
-  employeeId.textContent = `Employee ID: ${employee.id}`;
-  employeeCard.appendChild(employeeId);
-
-  const employeeName = document.createElement('p');
-  employeeName.textContent = `Employee name: ${employee.fullName}`;
-  employeeCard.appendChild(employeeName);
-
-  const employeeLevel = document.createElement('p');
-  employeeLevel.textContent = `Employee level: ${employee.level}`;
-  employeeCard.appendChild(employeeLevel);
-
-  const employeeDepartment = document.createElement('p');
-  employeeDepartment.textContent = `Employee department: ${employee.department}`;
-  employeeCard.appendChild(employeeDepartment);
-
-  const employeeSalary = document.createElement('p');
-  employeeSalary.textContent = `Employee salary: ${employee.salary.toFixed(0)}`;
-  employeeCard.appendChild(employeeSalary);
-
-  const employeeImage = document.createElement('img');
-  employeeImage.src = employee.imageURL;
-  employeeImage.alt = employee.fullName;
-  employeeImage.classList.add('employee-image');
-  employeeCard.appendChild(employeeImage);
-
-  employeeContainer.appendChild(employeeCard);
-}
-
-function renderEmployees() {
-  const employeeContainer = document.getElementById('employee-container');
-  employeeContainer.innerHTML = ''; // Clear existing content
-
-  employees.forEach(renderEmployee);
-}
-
-// Create employee objects using object literals
 function Employee(fullName, department, level, imageURL) {
   this.id = generateEmployeeID();
   this.fullName = fullName;
@@ -82,7 +39,23 @@ function Employee(fullName, department, level, imageURL) {
   this.salary = calculateSalary(level);
 }
 
-// Create employee objects using the constructor function
+Employee.prototype.render = function() {
+  const employeeContainer = document.getElementById('employee-container');
+
+  const employeeCard = document.createElement('div');
+  employeeCard.classList.add('employee-card');
+
+  employeeCard.innerHTML = `
+    <p>Employee ID: ${this.id}</p>
+    <p>Employee name: ${this.fullName}</p>
+    <p>Employee department: ${this.department}</p>
+    <p>Employee salary: ${this.salary.toFixed(0)}</p>
+    <img src="${this.imageURL}" alt="${this.fullName}" class="employee-image">
+  `;
+
+  employeeContainer.appendChild(employeeCard);
+};
+
 const ghazi = new Employee('Ghazi Samer', 'Administration', 'Senior', 'assets/1.jpg');
 const lana = new Employee('Lana Ali', 'Finance', 'Senior', 'assets/2.jpg');
 const tamara = new Employee('Tamara Ayoub', 'Marketing', 'Senior', 'assets/Gir.jpg');
@@ -92,11 +65,15 @@ const rana = new Employee('Rana Saleh', 'Development', 'Junior', 'assets/LA.jpg'
 const hadi = new Employee('Hadi Ahmad', 'Finance', 'Mid-Senior', 'assets/5.jpg');
 
 
-// Add employees to the array
-employees.push(ghazi, lana, tamara, safi, omar, rana, hadi, );
+employees.push(ghazi, lana, tamara, safi, omar, rana, hadi);
 
+function renderEmployees() {
+  const employeeContainer = document.getElementById('employee-container');
+  employeeContainer.innerHTML = ''; // Clear existing content
 
+  employees.forEach(function(employee) {
+    employee.render();
+  });
+}
 
-
-// Call the render function to display the employees
 renderEmployees();
