@@ -1,9 +1,10 @@
 const employees = [];
-let nextEmployeeID = 1000;
 
-function generateEmployeeID() {
-  const id = nextEmployeeID;
-  nextEmployeeID++;
+function generateUniqueEmployeeID() {
+  let id;
+  do {
+    id = Math.floor(Math.random() * 9000) + 1000; // Generate a random four-digit number
+  } while (employees.some(employee => employee.id === id)); // Check if the ID already exists in the array
   return id;
 }
 
@@ -31,7 +32,7 @@ function calculateSalary(level) {
 }
 
 function Employee(fullName, department, level, imageURL) {
-  this.id = generateEmployeeID();
+  this.id = generateUniqueEmployeeID();
   this.fullName = fullName;
   this.department = department;
   this.level = level;
@@ -80,86 +81,23 @@ Employee.prototype.render = function() {
   employeeContainer.appendChild(employeeCard);
 };
 
-
-
-const employeeImages = document.querySelectorAll('.employee-image');
-
-employeeImages.forEach(function(image) {
-  image.style.backgroundColor = 'grey';
-  image.style.border = '2px solid ';
-});
-
-const ghazi = new Employee('Ghazi Samer', 'Administration', 'Senior', 'assets/Ghazi.jpg');
-const lana = new Employee('Lana Ali', 'Finance', 'Senior', 'assets/Lana.jpg');
-const tamara = new Employee('Tamara Ayoub', 'Marketing', 'Senior', 'assets/Tamara.jpg');
-const safi = new Employee('Safi Walid', 'Administration', 'Mid-Senior', 'assets/Safi.jpg');
-const omar = new Employee('Omar Zaid', 'Development', 'Senior', 'assets/Omar.jpg');
-const rana = new Employee('Rana Saleh', 'Development', 'Junior', 'assets/Rana.jpg');
-const hadi = new Employee('Hadi Ahmad', 'Finance', 'Mid-Senior', 'assets/Hadi.jpg');
+const ghazi = new Employee('Ghazi Samer', 'Administration', 'Senior', 'assets/1.jpg');
+const lana = new Employee('Lana Ali', 'Finance', 'Senior', 'assets/2.jpg');
+const tamara = new Employee('Tamara Ayoub', 'Marketing', 'Senior', 'assets/Gir.jpg');
+const safi = new Employee('Safi Walid', 'Administration', 'Mid-Senior', 'assets/3.jpg');
+const omar = new Employee('Omar Zaid', 'Development', 'Senior', 'assets/download.jpg');
+const rana = new Employee('Rana Saleh', 'Development', 'Junior', 'assets/LA.jpg');
+const hadi = new Employee('Hadi Ahmad', 'Finance', 'Mid-Senior', 'assets/5.jpg');
 
 employees.push(ghazi, lana, tamara, safi, omar, rana, hadi);
 
 function renderEmployees() {
   const employeeContainer = document.getElementById('employee-container');
   employeeContainer.innerHTML = ''; // Clear existing content
-// Rest of the existing code
 
-function addEmployee() {
-  const fullName = document.getElementById('fullName').value;
-  const department = document.getElementById('department').value;
-  const level = document.getElementById('level').value;
-  const imageFile = document.getElementById('imageFile').files[0];
-
-  if (!fullName || !department || !level || !imageFile) {
-    alert('Please fill in all the fields');
-    return;
-  }
-
-  const reader = new FileReader();
-  reader.onload = function() {
-    const imageURL = reader.result;
-    const newEmployee = new Employee(fullName, department, level, imageURL);
-    employees.push(newEmployee);
-    renderEmployees();
-  };
-  reader.readAsDataURL(imageFile);
-
-  // Reset the form
-  document.getElementById('fullName').value = '';
-  document.getElementById('department').value = '';
-  document.getElementById('level').value = '';
-  document.getElementById('imageFile').value = '';
-}
-
-// Add event listener to the add employee button
-const addEmployeeButton = document.getElementById('addEmployeeButton');
-addEmployeeButton.addEventListener('click', addEmployee);
-
-// Rest of the existing code
-
-  // Group employees by department
-  const employeesByDepartment = {};
   employees.forEach(function(employee) {
-    const department = employee.department;
-    if (!employeesByDepartment[department]) {
-      employeesByDepartment[department] = [];
-    }
-    employeesByDepartment[department].push(employee);
+    employee.render();
   });
-
-  // Render employees in separate columns by department
-  for (const department in employeesByDepartment) {
-    const departmentEmployees = employeesByDepartment[department];
-    const columnContainer = document.createElement('div');
-    columnContainer.classList.add('employee-column');
-
-    departmentEmployees.forEach(function(employee) {
-      employee.render();
-      columnContainer.appendChild(employeeContainer.lastElementChild);
-    });
-
-    employeeContainer.appendChild(columnContainer);
-  }
 }
 
 renderEmployees();

@@ -4,108 +4,75 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accounting Page</title>
+    <title>Document</title>
     <link rel="stylesheet" href="Style/accstyle.css">
-    <style>
-        .slideshow-container {
-          position: relative;
-          width: 100%;
-          height: 400px;
-        }
-        
-        .slide {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          opacity: 0;
-          transition: opacity 0.5s ease-in-out;
-        }
-        
-        .slide.active {
-          opacity: 1;
-        }
-        
-        .slide img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-    </style>
 </head>
 <body>
     <div class="topnav">
         <a class="active" href="index.html">Home</a>
         <a href="accounting.html">Accounting</a>
-        <h2 class="title">HR Dynamics Consulting
-        </h2>
-    </div>
+        <h2 class="title">HR System</h2>
+      </div>
 
-    <div class="slideshow-container">
-        <div class="slide active">
-            <img src="assets/Admin.png" alt="Slide 1">
-        </div>
-        <div class="slide">
-            <img src="assets/Marke.jpg" alt="Slide 2">
-        </div>
-        <div class="slide">
-            <img src="https://www.esri.com/about/newsroom/wp-content/uploads/2022/03/is-spatial-finance-coming-to-your-company-wherenext-article-card-826x465-1.jpg" alt="Slide 3">
-        </div>
-    </div>
-    <p class="welcome-message">
-      We are delighted to have you here. Explore and discover everything we have to offer. 
-      From valuable resources and exciting products to a friendly and helpful community, 
-      we aim to provide you with an exceptional experience. Feel free to navigate through 
-      our pages and make the most of your visit. If you have any questions or need assistance, 
-      our team is always ready to help. Enjoy your time on our website!
-  </p>
+      <div>
+        <a  href="https://www.facebook.com">
+            <img class="i1" src="assets/FA.jpg" alt="Facebook" >
+          </a>
 
-    <div>
-        <a href="https://www.facebook.com">
-            <img class="i1" src="assets/FA.jpg" alt="Facebook">
-        </a>
-        <a href="https://www.linkedin.com/in/anas-alnaser-a6bb42175/">
+          <a  href="https://www.linkedin.com/in/anas-alnaser-a6bb42175/">
             <img class="i2" src="assets/Lin.png" alt="Twitter">
-        </a>
-        <a href="https://www.instagram.com/anasalnser/">
-            <img class="i3" src="assets/Instg.jpg" alt="Instagram">
-        </a>
-    </div>
+          </a>
+          <a  href="https://www.instagram.com/anasalnser/">
+            <img class="i3" src="assets/Instg.jpg" alt="instagram" >
+          </a>
+        </div>
 
-    <footer>
-        <div>All rights reserved By HR Dynamics Consulting
-          &copy;</div>
-    </footer>
 
-    <script>
-        const slides = document.querySelectorAll('.slide');
-        let currentSlide = 0;
-        
-        function showSlide(index) {
-          slides.forEach((slide, i) => {
-            if (i === index) {
-              slide.classList.add('active');
-            } else {
-              slide.classList.remove('active');
-            }
-          });
-        }
-        
-        function nextSlide() {
-          currentSlide = (currentSlide + 1) % slides.length;
-          showSlide(currentSlide);
-        }
-        
-        function previousSlide() {
-          currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-          showSlide(currentSlide);
-        }
-        
-        setInterval(nextSlide, 3000);
-        
-        document.querySelector('.slideshow-container').addEventListener('click', nextSlide);
-        document.querySelector('.slideshow-container').addEventListener('contextmenu', previousSlide);
-    </script>
+<footer>
+    <div>All rights reserved By HR system &copy;</div>
+
+
+
+</footer>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="Style/accstyle.css">
+</head>
+<body>
+    <div class="topnav">
+        <a class="active" href="index.html">Home</a>
+        <a href="accounting.html">Accounting</a>
+        <h2 class="title">HR System</h2>
+      </div>
+
+      <div>
+        <a  href="https://www.facebook.com">
+            <img class="i1" src="assets/FA.jpg" alt="Facebook" >
+          </a>
+
+          <a  href="https://www.linkedin.com/in/anas-alnaser-a6bb42175/">
+            <img class="i2" src="assets/Lin.png" alt="Twitter">
+          </a>
+          <a  href="https://www.instagram.com/anasalnser/">
+            <img class="i3" src="assets/Instg.jpg" alt="instagram" >
+          </a>
+        </div>
+
+
+<footer>
+    <div>All rights reserved By HR system &copy;</div>
+
+
+
+</footer>
+
 </body>
 </html>
