@@ -14,6 +14,8 @@
     padding: 14px 16px;
     text-decoration: none;
     font-size: 17px;
+    display: flex;
+
   }
   
   .topnav a:hover {
@@ -61,16 +63,17 @@
     width: 50px; height: 50px;
   }
   body {
-     background-color: rgba(245, 245, 245, 0.741);
+    background: linear-gradient(to right, rgb(2, 26, 33), rgb(9, 37, 32), rgb(23, 29, 26), rgb(17, 37, 29), rgb(209, 209, 234), rgb(139, 145, 146), rgb(221, 227, 230));
+
   }
      .employee-image {
-      max-width: 300px;
-    min-height: 400px; 
+      max-width: 150px;
+    min-height: 200px; 
   }
   .employee-card{
-    margin: 30px;
-    min-width: 25%;
-
+    margin: 20px;
+    min-height: 300px;
+padding-bottom: 20px;
     
   }
   #employee-container{
@@ -79,5 +82,48 @@
     justify-content: space-between;
 
   } 
+  .employee-card {
+    border: 2px solid #0c0c0c;
+    border-radius: 20px;
+    background-color: #6cece6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    margin: 10px;
+    width: 200px;
+  }
+    .employee-image-container {
+   border-bottom: 2px solid rgb(47, 21, 21);
+   border-top: 2px solid rgb(47, 21, 21);
+   border-style: 2px solid rgb(47, 21, 21);
+   border-left: 2px solid rgb(47, 21, 21);
+   border-right: 2px solid rgb(47, 21, 21);
+   background-color: rgb(65, 216, 239);
 
+ }
+ .logo {
+  width: 50px;
+  height: 50px;
+  margin-left: 10px;
+}
+
+  .employee-info-container {
+    text-align: center;
+  }
+  .employee-column {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 20px;
+    margin-bottom: 20px;
+  }
+    
+  .logo-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    margin-top: -10px;
+  }
+  
   
