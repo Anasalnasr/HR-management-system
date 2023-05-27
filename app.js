@@ -1,9 +1,10 @@
 const employees = [];
-let nextEmployeeID = 1000;
 
-function generateEmployeeID() {
-  const id = nextEmployeeID;
-  nextEmployeeID++;
+function generateUniqueEmployeeID() {
+  let id;
+  do {
+    id = Math.floor(Math.random() * 9000) + 1000; // Generate a random four-digit number
+  } while (employees.some(employee => employee.id === id)); // Check if the ID already exists in the array
   return id;
 }
 
@@ -30,51 +31,8 @@ function calculateSalary(level) {
   return netSalary;
 }
 
-function renderEmployee(employee) {
-  const employeeContainer = document.getElementById('employee-container');
-
-  const employeeCard = document.createElement('div');
-  employeeCard.classList.add('employee-card');
-
-  const employeeId = document.createElement('p');
-  employeeId.textContent = `Employee ID: ${employee.id}`;
-  employeeCard.appendChild(employeeId);
-
-  const employeeName = document.createElement('p');
-  employeeName.textContent = `Employee name: ${employee.fullName}`;
-  employeeCard.appendChild(employeeName);
-
-  const employeeLevel = document.createElement('p');
-  employeeLevel.textContent = `Employee level: ${employee.level}`;
-  employeeCard.appendChild(employeeLevel);
-
-  const employeeDepartment = document.createElement('p');
-  employeeDepartment.textContent = `Employee department: ${employee.department}`;
-  employeeCard.appendChild(employeeDepartment);
-
-  const employeeSalary = document.createElement('p');
-  employeeSalary.textContent = `Employee salary: ${employee.salary.toFixed(0)}`;
-  employeeCard.appendChild(employeeSalary);
-
-  const employeeImage = document.createElement('img');
-  employeeImage.src = employee.imageURL;
-  employeeImage.alt = employee.fullName;
-  employeeImage.classList.add('employee-image');
-  employeeCard.appendChild(employeeImage);
-
-  employeeContainer.appendChild(employeeCard);
-}
-
-function renderEmployees() {
-  const employeeContainer = document.getElementById('employee-container');
-  employeeContainer.innerHTML = ''; // Clear existing content
-
-  employees.forEach(renderEmployee);
-}
-
-// Create employee objects using object literals
 function Employee(fullName, department, level, imageURL) {
-  this.id = generateEmployeeID();
+  this.id = generateUniqueEmployeeID();
   this.fullName = fullName;
   this.department = department;
   this.level = level;
@@ -82,7 +40,47 @@ function Employee(fullName, department, level, imageURL) {
   this.salary = calculateSalary(level);
 }
 
-// Create employee objects using the constructor function
+Employee.prototype.render = function() {
+  const employeeContainer = document.getElementById('employee-container');
+
+  const employeeCard = document.createElement('div');
+  employeeCard.classList.add('employee-card');
+
+  const employeeImage = document.createElement('img');
+  employeeImage.src = this.imageURL;
+  employeeImage.alt = this.fullName;
+  employeeImage.classList.add('employee-image');
+
+  const employeeInfoContainer = document.createElement('div');
+  employeeInfoContainer.classList.add('employee-info-container');
+
+  const employeeID = document.createElement('p');
+  employeeID.textContent = `Employee ID: ${this.id}`;
+  employeeID.classList.add('employee-info');
+
+  const employeeName = document.createElement('p');
+  employeeName.textContent = `Employee name: ${this.fullName}`;
+  employeeName.classList.add('employee-info');
+
+  const employeeDepartment = document.createElement('p');
+  employeeDepartment.textContent = `Employee department: ${this.department}`;
+  employeeDepartment.classList.add('employee-info');
+
+  const employeeSalary = document.createElement('p');
+  employeeSalary.textContent = `Employee salary: ${this.salary.toFixed(0)}`;
+  employeeSalary.classList.add('employee-info');
+
+  employeeInfoContainer.appendChild(employeeID);
+  employeeInfoContainer.appendChild(employeeName);
+  employeeInfoContainer.appendChild(employeeDepartment);
+  employeeInfoContainer.appendChild(employeeSalary);
+
+  employeeCard.appendChild(employeeImage);
+  employeeCard.appendChild(employeeInfoContainer);
+
+  employeeContainer.appendChild(employeeCard);
+};
+
 const ghazi = new Employee('Ghazi Samer', 'Administration', 'Senior', 'assets/1.jpg');
 const lana = new Employee('Lana Ali', 'Finance', 'Senior', 'assets/2.jpg');
 const tamara = new Employee('Tamara Ayoub', 'Marketing', 'Senior', 'assets/Gir.jpg');
@@ -91,12 +89,15 @@ const omar = new Employee('Omar Zaid', 'Development', 'Senior', 'assets/download
 const rana = new Employee('Rana Saleh', 'Development', 'Junior', 'assets/LA.jpg');
 const hadi = new Employee('Hadi Ahmad', 'Finance', 'Mid-Senior', 'assets/5.jpg');
 
+employees.push(ghazi, lana, tamara, safi, omar, rana, hadi);
 
-// Add employees to the array
-employees.push(ghazi, lana, tamara, safi, omar, rana, hadi, );
+function renderEmployees() {
+  const employeeContainer = document.getElementById('employee-container');
+  employeeContainer.innerHTML = ''; // Clear existing content
 
+  employees.forEach(function(employee) {
+    employee.render();
+  });
+}
 
-
-
-// Call the render function to display the employees
 renderEmployees();
