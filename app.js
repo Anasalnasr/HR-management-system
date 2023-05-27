@@ -132,8 +132,8 @@ function addEmployee() {
 }
 
 // Add event listener to the add employee button
-const addEmployeeButton = document.getElementById('addEmployeeButton');
-addEmployeeButton.addEventListener('click', addEmployee);
+//const addEmployeeButton = document.getElementById('addEmployeeButton');
+//addEmployeeButton.addEventListener('click', addEmployee);
 
 // Rest of the existing code
 
