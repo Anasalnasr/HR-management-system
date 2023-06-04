@@ -1,5 +1,5 @@
 const employees = [];
-// Hello Saja
+
 function generateUniqueEmployeeID() {
   let id;
   do {
@@ -31,65 +31,68 @@ function calculateSalary(level) {
   return netSalary;
 }
 
-function Employee(fullName, department, level, imageURL) {
-  this.id = generateUniqueEmployeeID();
-  this.fullName = fullName;
-  this.department = department;
-  this.level = level;
-  this.imageURL = imageURL;
-  this.salary = calculateSalary(level);
-}
+const ghazi = {
+  id: generateUniqueEmployeeID(),
+  fullName: 'Ghazi Samer',
+  department: 'Administration',
+  level: 'Senior',
+  imageURL: 'assets/1.jpg',
+  salary: calculateSalary('Senior'),
+  render: function() {
+    const employeeContainer = document.getElementById('employee-container');
 
-Employee.prototype.render = function() {
-  const employeeContainer = document.getElementById('employee-container');
+    const employeeCard = document.createElement('div');
+    employeeCard.classList.add('employee-card');
 
-  const employeeCard = document.createElement('div');
-  employeeCard.classList.add('employee-card');
+    const employeeImage = document.createElement('img');
+    employeeImage.src = this.imageURL;
+    employeeImage.alt = this.fullName;
+    employeeImage.classList.add('employee-image');
+    employeeCard.appendChild(employeeImage);
 
-  const employeeImage = document.createElement('img');
-  employeeImage.src = this.imageURL;
-  employeeImage.alt = this.fullName;
-  employeeImage.classList.add('employee-image');
+    const employeeInfoContainer = document.createElement('div');
+    employeeInfoContainer.classList.add('employee-info-container');
 
-  const employeeInfoContainer = document.createElement('div');
-  employeeInfoContainer.classList.add('employee-info-container');
+    const employeeID = document.createElement('p');
+    employeeID.textContent = `Employee ID: ${this.id}`;
+    employeeID.classList.add('employee-info');
+    employeeInfoContainer.appendChild(employeeID);
 
-  const employeeID = document.createElement('p');
-  employeeID.textContent = `Employee ID: ${this.id}`;
-  employeeID.classList.add('employee-info');
+    const employeeName = document.createElement('p');
+    employeeName.textContent = `Employee name: ${this.fullName}`;
+    employeeName.classList.add('employee-info');
+    employeeInfoContainer.appendChild(employeeName);
 
-  const employeeName = document.createElement('p');
-  employeeName.textContent = `Employee name: ${this.fullName}`;
-  employeeName.classList.add('employee-info');
+    const employeeDepartment = document.createElement('p');
+    employeeDepartment.textContent = `Employee department: ${this.department}`;
+    employeeDepartment.classList.add('employee-info');
+    employeeInfoContainer.appendChild(employeeDepartment);
 
-  const employeeDepartment = document.createElement('p');
-  employeeDepartment.textContent = `Employee department: ${this.department}`;
-  employeeDepartment.classList.add('employee-info');
+    const employeeSalary = document.createElement('p');
+    employeeSalary.textContent = `Employee salary: ${this.salary.toFixed(0)}`;
+    employeeSalary.classList.add('employee-info');
+    employeeInfoContainer.appendChild(employeeSalary);
 
-  const employeeSalary = document.createElement('p');
-  employeeSalary.textContent = `Employee salary: ${this.salary.toFixed(0)}`;
-  employeeSalary.classList.add('employee-info');
-
-  employeeInfoContainer.appendChild(employeeID);
-  employeeInfoContainer.appendChild(employeeName);
-  employeeInfoContainer.appendChild(employeeDepartment);
-  employeeInfoContainer.appendChild(employeeSalary);
-
-  employeeCard.appendChild(employeeImage);
-  employeeCard.appendChild(employeeInfoContainer);
-
-  employeeContainer.appendChild(employeeCard);
+    employeeCard.appendChild(employeeInfoContainer);
+    employeeContainer.appendChild(employeeCard);
+  }
 };
 
-const ghazi = new Employee('Ghazi Samer', 'Administration', 'Senior', 'assets/1.jpg');
-const lana = new Employee('Lana Ali', 'Finance', 'Senior', 'assets/2.jpg');
-const tamara = new Employee('Tamara Ayoub', 'Marketing', 'Senior', 'assets/Gir.jpg');
-const safi = new Employee('Safi Walid', 'Administration', 'Mid-Senior', 'assets/3.jpg');
-const omar = new Employee('Omar Zaid', 'Development', 'Senior', 'assets/download.jpg');
-const rana = new Employee('Rana Saleh', 'Development', 'Junior', 'assets/LA.jpg');
-const hadi = new Employee('Hadi Ahmad', 'Finance', 'Mid-Senior', 'assets/5.jpg');
+// Create other employee objects using object literals
+const lana = {
+  id: generateUniqueEmployeeID(),
+  fullName: 'Lana Ali',
+  department: 'Finance',
+  level: 'Senior',
+  imageURL: 'assets/2.jpg',
+  salary: calculateSalary('Senior'),
+  render: function() {
+    // Render logic for Lana
+  }
+};
 
-employees.push(ghazi, lana, tamara, safi, omar, rana, hadi);
+// Add employee objects to the array
+employees.push(ghazi, lana);
 
 function renderEmployees() {
   const employeeContainer = document.getElementById('employee-container');
